@@ -1,0 +1,85 @@
+1) accept as many as numbers from user till he presses "0"  and write these numbers in a file. 
+  Now Open a file and read these numbers. 
+  ( Hint :- use Scanner class for input, FileOutputStream, DataOutputStream, FileInputStream , DataInputStream)
+
+  import java.io.*;
+import java.util.*;
+public class Assign1 {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+      Scanner sc=new Scanner(System.in);
+      int input;
+      
+      System.out.println("Enter data");
+      
+    	  try(FileOutputStream fos=new FileOutputStream("f:\\abc1.txt"))
+    			  {
+    				  try(DataOutputStream dos=new DataOutputStream(fos))
+    				  {
+    					  while ((input = sc.nextInt()) != 0)
+    				      {
+    					  dos.writeInt(input);
+    					
+    				      }
+    				  }
+    			  }
+    	  catch(IOException e)
+    	  {
+    		  System.out.println(e);
+    	  }
+    	  
+     
+      System.out.println("data added succesdfully");
+      System.out.println("Reading data");
+     try(FileInputStream fis=new FileInputStream("f:\\abc1.txt"))
+	  {
+		  try(DataInputStream dis=new DataInputStream(fis))
+		  {
+			  while (dis.available()!=0) 
+		      {
+		   
+		         System.out.println(dis.readInt());
+		      }
+		  }
+	  } 
+
+catch(IOException e)
+{
+  System.out.println(e);
+}
+	}
+
+}
+
+
+8) accept 10 characters from a user ( use Scanner).
+store these 10 characters in a file. (FileWriter)
+Now open a file and read all these characters.
+
+    import java.io.*;
+import java.util.*;
+public class Assign2 {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+        char arr[]=new char[10];
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter characters");
+        for(int i=0;i<10;i++)
+        	arr[i]=sc.next().charAt(0);
+        
+        try(FileWriter fw=new FileWriter("f:\\abc1.txt"))
+        {
+        fw.write(arr);
+        }
+        catch(IOException e)
+        {
+        	System.out.println(e);
+        }
+        System.out.println("characters added successfully");
+	}
+
+}
