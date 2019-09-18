@@ -54,6 +54,47 @@ catch(IOException e)
 }
 
 
+
+3) write a file copy program using byte streams.
+( FileOutputStream and FileInputStream )
+
+
+import java.io.*;
+
+public class Assign3 
+{
+
+	public static void main(String[] args)
+	{
+		FileInputStream in = null;
+	      FileOutputStream out = null;
+	      try {
+	         File f1 = new File("f:\\abc1.txt");
+	         File f2 = new File("f:\\abc2.txt");
+	         in = new FileInputStream(f1);
+	         out = new FileOutputStream(f2);
+	         byte[] b = new byte[1024];
+	         int len;
+	         
+	         while ((len = in.read(b)) > 0) 
+	         {
+	            out.write(b, 0, len);
+	         } 
+	         in.close();
+	         out.close();
+	         System.out.println("File copied successfully!!");
+	      }
+	      catch(IOException ioe)
+	      {
+	         ioe.printStackTrace();
+	      } 
+      
+	}
+
+}
+
+
+
 8) accept 10 characters from a user ( use Scanner).
 store these 10 characters in a file. (FileWriter)
 Now open a file and read all these characters.
@@ -83,3 +124,4 @@ public class Assign2 {
 	}
 
 }
+
